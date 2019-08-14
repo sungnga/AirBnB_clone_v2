@@ -8,6 +8,7 @@ from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
 import os
 
+
 class DBStorage:
     """This class manages MySQL database for AirBnB"""
     __engine = None
@@ -16,8 +17,8 @@ class DBStorage:
     def __init__(self):
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             os.getenv("HBNB_MYSQL_USER"), os.getenv("HBNB_MYSQL_PWD"),
-            os.getenv("HBNB_MYSQL_HOST"), os.getenv("HBNB_MYSQL_DB")
-            , pool_pre_ping=True))
+            os.getenv("HBNB_MYSQL_HOST"), os.getenv("HBNB_MYSQL_DB"),
+            pool_pre_ping=True))
         if os.getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(bind=self.__engine)
 
@@ -27,7 +28,7 @@ class DBStorage:
             returns a dictionary of objects
         """
         obj_dict = {}
-        if cls==None:
+        if cls is None:
             for obj in self.__session.query(City, State).all():
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 obj_dict[key] = obj
@@ -54,13 +55,14 @@ class DBStorage:
         Args:
             obj: given object
         """
-        if obj != None:
+        if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
         """create all tables in the database and the current database session
         """
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
