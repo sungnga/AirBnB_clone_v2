@@ -5,6 +5,7 @@ from models.city import City
 from models.state import State
 from models.user import User
 from models.place import Place
+from models.review import Review
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
@@ -31,7 +32,8 @@ class DBStorage:
         """
         obj_dict = {}
         if cls is None:
-            for obj in self.__session.query(City, State, User, Place).all():
+            for obj in self.__session.query(City, State, User, Place,
+                                            Review).all():
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 obj_dict[key] = obj
         else:
