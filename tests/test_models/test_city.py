@@ -67,6 +67,11 @@ class TestCity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.city), True)
 
+    def test_City_created(self):
+        '''Tests created_at for City'''
+        c1 = City()
+        self.assertTrue(hasattr(c1, "created_at"))
+
 
 if __name__ == "__main__":
     unittest.main()

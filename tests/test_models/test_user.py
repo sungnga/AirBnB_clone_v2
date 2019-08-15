@@ -73,6 +73,10 @@ class TestUser(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.user), True)
 
+    def test_user_created(self):
+        '''Tests created_at for User'''
+        u1 = User()
+        self.assertTrue(hasattr(u1, "created_at"))
 
 if __name__ == "__main__":
     unittest.main()

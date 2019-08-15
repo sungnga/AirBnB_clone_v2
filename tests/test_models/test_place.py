@@ -94,6 +94,10 @@ class TestPlace(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.place), True)
 
+    def test_place_created(self):
+        '''Tests created_at for place'''
+        p1 = Place()
+        self.assertTrue(hasattr(p1, "created_at"))
 
 if __name__ == "__main__":
     unittest.main()

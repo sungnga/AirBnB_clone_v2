@@ -62,6 +62,10 @@ class TestAmenity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.amenity), True)
 
+    def test_amenity_created(self):
+        '''Tests created_at for Amenity'''
+        a1 = Amenity()
+        self.assertTrue(hasattr(a1, "created_at"))
 
 if __name__ == "__main__":
     unittest.main()

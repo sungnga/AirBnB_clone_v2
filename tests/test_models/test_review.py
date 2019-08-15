@@ -70,6 +70,10 @@ class TestReview(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.rev), True)
 
+    def test_review_created(self):
+        '''Tests created_at for review'''
+        r1 = Review()
+        self.assertTrue(hasattr(r1, "created_at"))
 
 if __name__ == "__main__":
     unittest.main()

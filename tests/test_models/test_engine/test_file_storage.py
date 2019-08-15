@@ -91,6 +91,40 @@ class TestFileStorage(unittest.TestCase):
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
 
+    def test_instancecreation(self):
+        """Test that instance of FileStorage is properly created"""
+        Storage = FileStorage()
+        self.assertTrue(type(Storage) == FileStorage)
+        self.assertTrue(isinstance(Storage, FileStorage))
+
+    def test_storage_all_return(self):
+        '''Tests that all returns dict'''
+        fs = FileStorage()
+        self.assertEqual(type(fs.all()), dict)
+
+    def test_new_bad_float(self):
+        '''Tests if passing float to new'''
+        fs = FileStorage()
+        with self.assertRaises(AttributeError):
+            fs.new(5.5)
+
+    def test_new_bad_string(self):
+        '''Tests if passing string to new'''
+        fs = FileStorage()
+        with self.assertRaises(AttributeError):
+            fs.new("hello")
+
+    def test_new_bad_int(self):
+        '''Tests if passing int to new'''
+        fs = FileStorage()
+        with self.assertRaises(AttributeError):
+            fs.new(927)
+
+    def test_new_bad(self):
+        '''Tests if passing bad argument to new'''
+        fs = FileStorage()
+        with self.assertRaises(NameError):
+            fs.new(BadModel())
 
 if __name__ == "__main__":
     unittest.main()

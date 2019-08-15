@@ -66,6 +66,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_dict['created_at'], str)
         self.assertIsInstance(base_dict['updated_at'], str)
 
+    def test_singleinstancecreation(self):
+        """This function tests for single instance creation"""
+        b1 = BaseModel()
+        self.assertEqual(type(b1.id), str)
 
 if __name__ == "__main__":
     unittest.main()

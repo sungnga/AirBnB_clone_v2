@@ -64,6 +64,10 @@ class TestState(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.state), True)
 
+    def test_state_created(self):
+        '''Tests created_at for State'''
+        s1 = State()
+        self.assertTrue(hasattr(s1, "created_at"))
 
 if __name__ == "__main__":
     unittest.main()
