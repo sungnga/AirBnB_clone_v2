@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """This is the place class"""
+import models
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
@@ -61,12 +62,12 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             amenity_list = []
-            for obj in self.amenity_ids:
-                if obj.id == self.id:
-                    amenity_list += obj
+            for amenity in models.storage.all(models.amenity.Amenity).values():
+                if amenity.id in self.amenity_ids:
+                    amenity_list += amenity
             return amenity_list
 
         @amenities.setter
         def amenities(self, amenity_object):
             if type(amenity_object).__name__ == "Amenity":
-                self.amenity_ids.append(amenity_object)
+                self.amenity_ids.append(amenity_object.id)
