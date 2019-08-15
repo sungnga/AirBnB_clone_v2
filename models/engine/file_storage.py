@@ -25,7 +25,7 @@ class FileStorage:
         Return:
             returns a dictionary of __object
         """
-        if cls == None:
+        if cls is None:
             return self.__objects
         else:
             resultdict = {}
@@ -66,7 +66,7 @@ class FileStorage:
     def delete(self, obj=None):
         """delete obj from __objects if it's inside
         """
-        if obj != None:
+        if obj is not None:
             if obj in self.__objects.values():
                 obj_key = "{}.{}".format(type(obj).__name__, obj.id)
                 del self.__objects[obj_key]
