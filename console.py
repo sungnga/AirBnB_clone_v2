@@ -155,6 +155,7 @@ class HBNBCommand(cmd.Cmd):
             args = line.split(" ")
             if args[0] not in self.all_classes:
                 print("** class doesn't exist **")
+                return
             for key in objects:
                 name = key.split('.')
                 if name[0] == args[0]:

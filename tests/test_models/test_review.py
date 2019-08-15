@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """test for review"""
 import unittest
@@ -59,6 +60,8 @@ class TestReview(unittest.TestCase):
         self.assertEqual(type(self.rev.place_id), str)
         self.assertEqual(type(self.rev.user_id), str)
 
+    @unittest.skipIf(os.getenv("HBNB_TYPE_STORAGE") == "db",
+                     "demonstrating skipping")
     def test_save_Review(self):
         """test if the save works"""
         self.rev.save()
