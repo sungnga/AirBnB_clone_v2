@@ -3,6 +3,16 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy import *
+import os
+
+metadata = Base.metadata
+
+place_amenity = Table('place_amenity', metadata,
+                      Column('place_id', String(60), ForeignKey("places.id"),
+                             primary_key=True, nullable=False),
+                      Column('amenity_id', String(60), ForeignKey(
+                          "amenities.id"), primary_key=True, nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -32,12 +42,31 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     amenity_ids = []
-    reviews = relationship("Review", backref="place")
 
-    @property
-    def reviews(self):
-        reviewlist = []
-        for review in self.reviews:
-            if review.place_id == self.id:
-                reviewlist += review
-        return reviewlist
+    if os.getenv("HBNB_TYPE_STORAGE") == "db":
+        reviews = relationship("Review", backref="place")
+    else:
+        @property
+        def reviews(self):
+            reviewlist = []
+            for review in self.reviews:
+                if review.place_id == self.id:
+                    reviewlist += review
+            return reviewlist
+
+    if os.getenv("HBNB_TYPE_STORAGE") == "db":
+        amenities = relationship("Amenity", secondary=place_amenity,
+                                 viewonly=False)
+    else:
+        @property
+        def amenities(self):
+            amenity_list = []
+            for obj in self.amenity_ids:
+                if obj.id == self.id:
+                    amenity_list += obj
+            return amenity_list
+
+        @amenities.setter
+        def amenities(self, amenity_object):
+            if type(amenity_object).__name__ == "Amenity":
+                self.amenity_ids.append(amenity_object)
