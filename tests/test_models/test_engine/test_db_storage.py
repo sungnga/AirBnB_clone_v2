@@ -5,7 +5,7 @@
 class TestFileStorage(unittest.TestCase):
     '''this will test the FileStorage'''
 
-    def setUp(cls):
+    def setUp(self):
         pass
 
     def tearDown(self):
