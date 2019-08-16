@@ -52,3 +52,8 @@ Ex:
 Additionally, the console supports `<class name>.<command>(<parameters>)` syntax.
 Ex:
 `City.show(my_city_id)`
+
+
+#MySQL
+
+In addition to FileStorage and JSON, SQLAlchemy and MySQL may be used for storage as well. To use the latter, set the HBNB_TYPE_STORAGE environmental variable equal to "db". This provides abstraction, allowing the code to run without knowing how it's stored.
