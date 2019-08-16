@@ -66,3 +66,24 @@ After a MySQL server is setup, users are able to:
 * Setup privileges on the database
 * Add, update, and delete an object
 
+### Database Storage Engine
+* The folder [engine](./models/engine/) contains the File Storage engine and the Database Storage engine that manage and store all the data for all the classes in this project.
+
+### Accessing database in MySQL interactive mode:
+```
+$ mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 76
+Server version: 5.7.8-rc MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+```
