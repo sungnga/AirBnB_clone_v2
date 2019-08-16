@@ -54,6 +54,15 @@ Ex:
 `City.show(my_city_id)`
 
 
+
 # MySQL
 
 In addition to FileStorage and JSON, SQLAlchemy and MySQL may be used for storage as well. To use the latter, run the setup_mysql_dev.sql script to prepare a MySQL server and set the HBNB_TYPE_STORAGE environmental variable equal to "db". Being able to switch between different forms of storage provides abstraction, allowing the code to run without knowing how it's stored.
+
+After a MySQL server is setup, users are able to:
+* Create a database
+* Create a new user (in localhost)
+* Setup a password for the new user
+* Setup privileges on the database
+* Add, update, and delete an object
+
