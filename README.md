@@ -56,4 +56,4 @@ Ex:
 
 #MySQL
 
-In addition to FileStorage and JSON, SQLAlchemy and MySQL may be used for storage as well. To use the latter, set the HBNB_TYPE_STORAGE environmental variable equal to "db". This provides abstraction, allowing the code to run without knowing how it's stored.
+In addition to FileStorage and JSON, SQLAlchemy and MySQL may be used for storage as well. To use the latter, run the setup_mysql_dev.sql script to prepare a MySQL server and set the HBNB_TYPE_STORAGE environmental variable equal to "db". Being able to switch between different forms of storage provides abstraction, allowing the code to run without knowing how it's stored.
