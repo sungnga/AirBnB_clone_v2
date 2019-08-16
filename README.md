@@ -86,4 +86,58 @@ owners.
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql>
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| hbnb_dev_db        |
+| hbtn_0e_6_usa      |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use hbnb_dev_db;
+Database changed
+mysql> SHOW TABLES;
++-----------------------+
+| Tables_in_hbnb_dev_db |
++-----------------------+
+| amenities             |
+| cities                |
+| place_amenity         |
+| places                |
+| reviews               |
+| states                |
+| users                 |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM amenities;
++--------------------------------------+---------------------+---------------------+-------+
+| id                                   | created_at          | updated_at          | name  |
++--------------------------------------+---------------------+---------------------+-------+
+| 0f008f20-0109-49f8-9d03-cc7148b8ee93 | 2019-08-15 00:11:57 | 2019-08-15 00:11:57 | Oven  |
+| 44835307-d7e3-4282-8d5d-5a9afbdfecb1 | 2019-08-15 00:33:21 | 2019-08-15 00:33:21 | Cable |
+| 58de07bf-9863-4918-bc75-793775cc714b | 2019-08-15 00:33:21 | 2019-08-15 00:33:21 | Wifi  |
+| 8036b63e-f36f-441e-a860-0b95bdb35963 | 2019-08-15 00:11:57 | 2019-08-15 00:11:57 | Cable |
+| 805df3e5-60a9-474f-92ab-5b3cdbe1c282 | 2019-08-15 00:11:57 | 2019-08-15 00:11:57 | Wifi  |
+| 90f0a803-bee2-4bb7-9e00-77a8a24de52e | 2019-08-15 21:19:33 | 2019-08-15 21:19:33 | Oven  |
+| a4fd5fac-d870-43f0-8fa5-c563913bb3bf | 2019-08-15 21:19:33 | 2019-08-15 21:19:33 | Cable |
+| b05bf0a8-d13d-48a3-963c-fb96df24a9ca | 2019-08-15 21:19:33 | 2019-08-15 21:19:33 | Wifi  |
+| b5cc98e7-3a52-4e45-bab8-1ca12f6676c8 | 2019-08-15 00:33:21 | 2019-08-15 00:33:21 | Oven  |
++--------------------------------------+---------------------+---------------------+-------+
+9 rows in set (0.00 sec)
+
+mysql>
 ```
+
+### Environment variables used in this project:
+* HBNB_ENV: running environment
+* HBNB_MYSQL_USER: the username of MySQL
+* HBNB_MYSQL_PWD: the password of MySQL
+* HBNB_MYSQL_HOST: the hostname of MySQL
+* HBNB_MYSQL_DB: the database name of MySQL
+* HBNB_TYPE_STORAGE: the type of storage used. It can be “file” (using FileStorage) or db (using DBStorage)
